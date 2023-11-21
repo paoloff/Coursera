@@ -35,7 +35,7 @@ app.layout = html.Div(children=[html.H1('SpaceX Falcon 9 Launch Records Dashboar
                                 # The default select value is for ALL sites
                                 # dcc.Dropdown(id='site-dropdown',...)
                                 html.Br(style={'backgroundColor': 'red'}),
-                                html.H1('How a Falcon 9 Rocket looks like',
+                                html.H1('How a Falcon 9 Rocket Looks Like',
                                         style={'textAlign': 'Left', 'color': '#1C7ECF',
                                                'font-size': 30}),
                                 html.Img(src=pil_image, width=1000),
@@ -84,7 +84,7 @@ def get_pie_chart(entered_site):
         return fig
     else:
         filtered_df = spacex_df[spacex_df['Launch Site']==entered_site]
-        fig = px.pie(filtered_df, names='Outcome',title='Relative Outcomes for Specific Site. Red = Success; Blue = Failure')
+        fig = px.pie(filtered_df, names='Outcome',title='Relative Outcomes for Specific Site. 0 = Success; 1 = Failure')
         return fig
 
 # TASK 4:
@@ -109,4 +109,4 @@ def get_scatter_plot(entered_site, payload):
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(host='0.0.0.0', port=3000)
